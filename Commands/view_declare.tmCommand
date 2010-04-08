@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+
+path = []
+
+current = File.dirname(ENV['TM_FILEPATH'])
+
+while File.exists?("#{current}.js")
+	path &lt;&lt; File.basename(current)
+	current = File.dirname(current)
+end
+
+path.reverse!
+
+name = File.basename(ENV['TM_FILEPATH']).sub('.js', '')
+name = name[0,1].upcase + name[1..-1]
+name = path.map { |x| x[0,1].downcase + x[1..-1] }.join('.') + '.' + name if path.size
+
+puts "uki.view.declare('\${1:#{name}}', \${2:uki.view.Base}, function(Base) {
+    \$0
+});
+"
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>view.declare</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.js</string>
+	<key>tabTrigger</key>
+	<string>vd</string>
+	<key>uuid</key>
+	<string>1C5AB56D-AF35-4C48-AF21-AEB8492D33E2</string>
+</dict>
+</plist>

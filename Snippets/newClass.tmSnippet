@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>uki.newClass(${1:uki.view.Base, }new function() {
+    ${1/(\S+),\s.*/var Base = $1.prototype;\n/}
+    $0
+});</string>
+	<key>name</key>
+	<string>newClass</string>
+	<key>scope</key>
+	<string>source.js</string>
+	<key>tabTrigger</key>
+	<string>nc</string>
+	<key>uuid</key>
+	<string>3FFD9151-B295-4A39-94AA-E5927C8A6DDB</string>
+</dict>
+</plist>
